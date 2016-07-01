@@ -27,6 +27,7 @@ var barrels = [
     // App specific barrels.
     'app',
     'app/master-screener',
+    'app/home',
 ];
 var cliSystemConfigPackages = {};
 barrels.forEach(function (barrelName) {
