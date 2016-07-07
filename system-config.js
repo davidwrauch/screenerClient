@@ -5,9 +5,38 @@
  * User Configuration.
  **********************************************************************************************/
 /** Map relative paths to URLs. */
-var map = {};
+var map = {
+    '@ngrx': 'vendor/@ngrx',
+    'ngrx-store-logger': 'vendor/ngrx-store-logger/dist',
+    '@angular2-material': 'vendor/@angular2-material'
+};
 /** User packages configuration. */
-var packages = {};
+var packages = {
+    '@ngrx/core': {
+        main: 'index.js',
+        format: 'cjs'
+    },
+    '@ngrx/store': {
+        main: 'index.js',
+        format: 'cjs'
+    },
+    'ngrx-store-logger': {
+        main: 'index.js',
+        format: 'cjs'
+    }
+};
+var materialPkgs = [
+    'core',
+    'toolbar',
+    'button',
+    'input',
+    'icon',
+    'grid-list',
+    'card'
+];
+materialPkgs.forEach(function (pkg) {
+    packages[("@angular2-material/" + pkg)] = { main: pkg + ".js" };
+});
 ////////////////////////////////////////////////////////////////////////////////////////////////
 /***********************************************************************************************
  * Everything underneath this line is managed by the CLI.
@@ -28,6 +57,9 @@ var barrels = [
     'app',
     'app/master-screener',
     'app/home',
+    'app/reducers',
+    'app/models',
+    'app/actions'
 ];
 var cliSystemConfigPackages = {};
 barrels.forEach(function (barrelName) {
