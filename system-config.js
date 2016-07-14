@@ -20,6 +20,10 @@ var packages = {
         main: 'index.js',
         format: 'cjs'
     },
+    '@ngrx/effects': {
+        main: 'index.js',
+        format: 'cjs'
+    },
     'ngrx-store-logger': {
         main: 'index.js',
         format: 'cjs'
@@ -32,7 +36,9 @@ var materialPkgs = [
     'input',
     'icon',
     'grid-list',
-    'card'
+    'card',
+    'radio',
+    'checkbox'
 ];
 materialPkgs.forEach(function (pkg) {
     packages[("@angular2-material/" + pkg)] = { main: pkg + ".js" };

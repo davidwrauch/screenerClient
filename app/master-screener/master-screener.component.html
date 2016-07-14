@@ -1,64 +1,28 @@
-<div class="flex flex-column" style="min-height:100vh; margin-top:100px;">
-  <div class="flex-auto sm-flex">
-    <!-- MAIN -->
-    <main class="flex-auto">
-      
-      <!-- MASTER SCREENER-->
-      <div class="flex-row">
-        <div class="clearfix container md-col-10 sm-col-12">
-          <div>
-            <form (ngSubmit)="onSubmit()" 
-              [formGroup]="form" 
-              [id]="masterScreenerForm" 
-              class="mt3">
-                
-              <div *ngFor="let questionGroup of data.questionGroups">
-                <general-question-group 
-                  [form]="form" 
-                  [questionGroup]="questionGroup"
-                  [collapsedControlMap]="collapsedControlMap">
-                </general-question-group>
-              </div>
-            </form>
-            
-            <!-- SUBMIT BUTTON -->
-
-            <div class="ml2 mt2 mb2">
-              <button type="submit" 
-                [id]="masterScreenerSubmit" 
-                class="btn btn-primary border rounded"
-                [disabled]="!form.valid"
-                (click)="onSubmit()">
-                Submit
-              </button>
-            </div> 
-
-            <!-- PAYLOAD DISPLAY -->
-            <div class="mt2" *ngIf="payload">
-              <strong>Saved the following values</strong><br>{{payload}}
-            </div>
-            
-          </div>
-        </div>
+<div [ngSwitch] = "width$ | async">
+  <div *ngSwitchCase="'LARGE'" [style.background-color]="'lightblue'" class="flex flex-column" [style.height]="'100vh'" [style.width]="'100vw'">
+    <div class="flex-grow">
+      <div style="width:60%; height:96%; margin-left:20vw; margin-right:20vw; margin-top:5vh;">
+        <form [formGroup]="form$ | async">
+          <gen-ycb-question 
+            [question]="currentQuestion$ | async"
+            [width]="width$ | async">>
+          </gen-ycb-question>
+        </form>
       </div>
-      
-    </main>
-    <!-- LEFT SIDE NAV --> 
-    <nav class="flex-first border md-show" style="width:10rem">
-      <ul class="list-reset mt2 mb2">
-        <li><a href="#" class="btn block">Link</a>
-        <li><a href="#" class="btn block">Link</a>
-        <li><a href="#" class="btn block">Link</a>
-      </ul>
-    </nav>
-    
-    <!-- RIGHT SIDE NAV -->
-    <aside class="p2 border md-show" style="width:10rem">
-      <p>Sidebar</p>
-    </aside>
+    </div>
   </div>
-  <!-- FOOTER -->
-    <footer class="p2 border">
-      <p class="m0">Footer</p>
-    </footer>
+  
+  <div *ngSwitchDefault [style.background-color]="'lightblue'" class="flex flex-column" [style.height]="'100vh'" [style.width]="'100vw'">
+    <div class="flex-grow">
+      <div style="width: 90%; height:96%; margin-left:5vw; margin-right:5vw; margin-top:5vh;">
+        <form [formGroup]="form$ | async">
+          <gen-ycb-question 
+            [question]="currentQuestion$ | async"
+            [width]="width$ | async">
+          </gen-ycb-question>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
+
