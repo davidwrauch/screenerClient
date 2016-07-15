@@ -65,7 +65,9 @@ var barrels = [
     'app/home',
     'app/reducers',
     'app/models',
-    'app/actions'
+    'app/actions',
+    'app/components',
+    'app/master-screener-results'
 ];
 var cliSystemConfigPackages = {};
 barrels.forEach(function (barrelName) {
