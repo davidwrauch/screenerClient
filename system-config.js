@@ -38,7 +38,8 @@ var materialPkgs = [
     'grid-list',
     'card',
     'radio',
-    'checkbox'
+    'checkbox',
+    'tabs'
 ];
 materialPkgs.forEach(function (pkg) {
     packages[("@angular2-material/" + pkg)] = { main: pkg + ".js" };
@@ -61,13 +62,13 @@ var barrels = [
     'rxjs',
     // App specific barrels.
     'app',
-    'app/master-screener',
-    'app/home',
+    'app/directives',
+    'app/pages',
     'app/reducers',
     'app/models',
     'app/actions',
     'app/components',
-    'app/master-screener-results'
+    'app/effects'
 ];
 var cliSystemConfigPackages = {};
 barrels.forEach(function (barrelName) {
